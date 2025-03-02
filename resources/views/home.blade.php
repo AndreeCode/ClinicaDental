@@ -20,12 +20,13 @@
                 <img class="h-12 md:hidden drop-shadow-[0_0_4px_rgba(255,255,255,1)]" src="{{ asset('images/logo/logo-small.png') }}" alt="">
                 <img class="h-12 hidden md:block drop-shadow-[0_0_4px_rgba(255,255,255,1)]" src="{{ asset('images/logo/logo-large.png') }}" alt="">
             </div>
-            <nav class="nav-links absolute md:relative w-[100%] md:w-auto h-[100vh]  md:h-auto md:top-auto top-[-100vh] left-0 md:left-auto bg-black md:bg-auto bg-opacity-80 md:bg-opacity-0">
+            <nav class="nav-links absolute md:relative w-[100%] md:w-auto h-[100vh]  md:h-auto md:top-auto top-[-100vh] left-0 md:left-auto  md:bg-transparent bg-black bg-opacity-80 md:bg-opacity-0">
                 <ul class="md:flex">
                     <li><a class="flex h-20 p-3 lg:p-5 items-center text-white" href="">Inicio</a></li>
                     <li><a class="flex h-20 p-3 lg:p-5 items-center text-white" href="">Servicios</a></li>
                     <li><a class="flex h-20 p-3 lg:p-5 items-center text-white" href="">Testimonios</a></li>
                     <li><a class="flex h-20 p-3 lg:p-5 items-center text-white" href="">Contactame</a></li>
+                    <li><a class="flex h-20 p-3 lg:p-5 items-center text-white" href="{{ action([App\Http\Controllers\authController::class,"showLoginForm"]) }}">Login</a></li>
                 </ul>
             </nav>
             <div class="md:hidden">
@@ -45,7 +46,7 @@
 
         }
     </script>
-    <main class="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory bg-gradient-to-b from-white  to-[#aeccff]">
+    <main class="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory bg-gradient-to-b from-white to-[#aeccff]">
         <div class="w-full h-screen snap-start flex justify-center items-center">
             <div class="flex justify-between w-full h-[50vh] px-[10vw] pt-[10vh] pb-0 bg-white">
                 <div class=" w-1/2 ">
