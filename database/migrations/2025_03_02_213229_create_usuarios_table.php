@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('user')->unique();
             $table->string('password');
-            $table->string('role')->default('paciente');
-            $table->string('telefono')->unique();
+            $table->enum('role',['admin','medico','empleado','paciente'])->default('paciente');
+            $table->string('telefono',9)->unique();
             $table->timestamps();
         });
     }
