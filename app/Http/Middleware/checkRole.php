@@ -14,9 +14,16 @@ class checkRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next,int $checkLogueo=0): Response
     {
-        if(Auth::check()){
+        if($checkLogueo){
+            if(Auth::check()){
+                return $next($request);
+            }
+            return redirect()->route('login.form');
+        }
+        
+        if(!Auth::check()){
             return $next($request);
         }
         return redirect()->route('login.form');
