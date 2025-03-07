@@ -3,11 +3,11 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\homeController;
 use App\Http\Middleware\checkRole;
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dtb',function(){
-    dd(Usuario::all());
+    dd(User::all());
 });
 
 Route::get('/',[homeController::class,'index']);
@@ -22,5 +22,13 @@ Route::middleware([checkRole::class.':0'])->group(function (){
 
 Route::middleware([checkRole::class.':1'])->group(function (){
     Route::get('/dashboard',[authController::class,'showDashboardUser'])->name('dashboard.user');
+    Route::get('/logout',[authController::class,'logout'])->name('logout.submit');
 });
 
+Route::get('/edit',function (){
+    $user=User::find(1);
+    $user->telefono='951286673';
+    $user->rol='admin';
+    $user->save();
+    dd($user);
+});

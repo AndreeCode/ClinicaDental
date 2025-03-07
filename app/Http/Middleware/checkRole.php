@@ -16,6 +16,7 @@ class checkRole
      */
     public function handle(Request $request, Closure $next,int $checkLogueo=0): Response
     {
+        
         if($checkLogueo){
             if(Auth::check()){
                 return $next($request);
@@ -26,6 +27,6 @@ class checkRole
         if(!Auth::check()){
             return $next($request);
         }
-        return redirect()->route('login.form');
+        return redirect()->route('dashboard.user');
     }
 }

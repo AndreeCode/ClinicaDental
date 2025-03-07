@@ -35,9 +35,9 @@
                 </div>
                 <div>
                     <label class="text-gray-600 text-sm mb-2 block">Usuario</label>
-                    <input name="user" type="text"
+                    <input name="email" type="text"
                         class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
-                        placeholder="Usuario" />
+                        placeholder="email" />
                 </div>
                 <div>
                     <label class="text-gray-600 text-sm mb-2 block">Nmr. Telefono</label>
