@@ -1,13 +1,12 @@
 <template>
-    <div class="">
-        <h1>bienvenido a pg1</h1>
-        <p>esta es la seccion principal</p>
-        <FullCalendar :options="calendarOptions" />
-    </div>
+  <div class="">
+    <FullCalendar :options="calendarOptions" />
+  </div>
 </template>
 <script>
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 
 export default {
@@ -17,8 +16,13 @@ export default {
   data() {
     return {
       calendarOptions: {
-        plugins: [ dayGridPlugin, interactionPlugin ],
-        initialView: 'dayGridMonth'
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+        initialView: 'timeGridWeek',
+        locale: 'es',
+        headerToolbar: {
+          left: 'dayGridMonth,timeGridWeek,timeGridDay',
+          center: 'title',
+        },
       }
     }
   }
