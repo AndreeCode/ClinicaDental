@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <div id="app">
+    
+    <div id="app" data-name='{{ Auth::user()->name }}'>
     </div>
 </body>
 
