@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\StoreUsuarioRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +16,7 @@ class authController extends Controller
     {
         return view("auth.login");
     }
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     { 
         $credentials = $request->only('email', 'password');
         // Intentar autenticar al usuario
@@ -34,11 +36,13 @@ class authController extends Controller
     {
         return view("auth.register");
     }
-    public function register(Request $request)
+    public function register(StoreUsuarioRequest $request)
     {
         $usuario=User::create([ 
             'name'=>$request->name,
+            'lastname'=>$request->lastname,
             'email'=> $request->email,
+            'telefono'=>$request->telefono,
             'password'=> $request->password,
         ]);
         session()->flash('success','Tu cuenta ha sido creada con exito');

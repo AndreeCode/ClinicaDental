@@ -18,11 +18,17 @@ export default {
       calendarOptions: {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
         initialView: 'timeGridWeek',
+        slotMinTime:'08:00:00',
+        slotMaxTime:'20:00:00',
+        contentHeight: 'auto',
         locale: 'es',
+        timeZone: 'America/Lima',
         headerToolbar: {
           left: 'dayGridMonth,timeGridWeek,timeGridDay',
           center: 'title',
         },
+        events:[]
+
       }
     }
   }

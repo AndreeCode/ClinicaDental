@@ -34,6 +34,12 @@
                         placeholder="Enter name" />
                 </div>
                 <div>
+                    <label class="text-gray-600 text-sm mb-2 block">Last Name</label>
+                    <input name="lastname" type="text"
+                        class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+                        placeholder="Enter last name" />
+                </div>
+                <div>
                     <label class="text-gray-600 text-sm mb-2 block">Usuario</label>
                     <input name="email" type="text"
                         class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
@@ -41,7 +47,7 @@
                 </div>
                 <div>
                     <label class="text-gray-600 text-sm mb-2 block">Nmr. Telefono</label>
-                    <input name="telefono" type="tel"
+                    <input name="telefono" type="text"
                         class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
                         placeholder="Ingrese su numero de telefono" />
                 </div>

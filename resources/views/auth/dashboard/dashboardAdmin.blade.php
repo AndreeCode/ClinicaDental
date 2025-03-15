@@ -7,6 +7,7 @@
     <title>Document</title>
     @vite('resources/css/app.css')
     @vite('resources/js/jsVue/App.js')
+    
 </head>
 
 <body>

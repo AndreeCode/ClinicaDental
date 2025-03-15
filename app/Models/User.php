@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'lastname',
         'telefono',
         'rol'
     ];
@@ -47,4 +48,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function citas(){
+        return $this->hasMany(Event::class);
+    } 
 }

@@ -22,7 +22,7 @@ Route::middleware([checkRole::class.':0'])->group(function (){
 
 Route::middleware([checkRole::class.':1'])->group(function (){
     Route::get('/dashboard/{dash?}',[authController::class,'showDashboardUser'])->whereIn('dash',['citar','usuario','historial'])->name('dashboard.user');
-    Route::get('/logout',[authController::class,'logout'])->name('logout.submit');
+    Route::post('/logout',[authController::class,'logout'])->name('logout.submit');
 });
 
 Route::get('/edit',function (){
