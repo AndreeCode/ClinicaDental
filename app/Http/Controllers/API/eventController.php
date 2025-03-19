@@ -21,7 +21,17 @@ class eventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = Event::create([
+            'title' => $request->title ?? 'Sin título', // Opcional
+            'description' => $request->description ?? 'Sin descripción', // Opcional
+            'start' => $request->start,
+            'end' => $request->end,
+            'user_id' => $request->user_id, // Tomar el usuario autenticado
+        ]);
+        
+        return response()->json([
+            'message'=>'hola mundo perfectt',
+        ]);
     }
 
     /**

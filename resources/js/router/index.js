@@ -11,8 +11,9 @@ const routes=[
         component: home,
     },
     {
-        path: '/dashboard/citar',
+        path: '/dashboard/citar/',
         component: registrarCita,
+
     },
     {
         path: '/dashboard/usuario',

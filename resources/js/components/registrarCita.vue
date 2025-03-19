@@ -1,78 +1,83 @@
 <template>
-    <div class="">
-        <h1>Bienvenido al registro</h1>
-        <form class="w-full max-w-lg">
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-first-name">
-                        First Name
-                    </label>
-                    <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="grid-first-name" type="text" placeholder="Jane">
-                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-last-name">
-                        Last Name
-                    </label>
-                    <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name" type="text" placeholder="Doe">
-                </div>
+    <div class="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-md">
+        <h1 class="text-xl font-bold mb-4 text-gray-700">Actualizar Registro</h1>
+
+        <form @submit.prevent="submitForm">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="title">Título (Opcional)</label>
+                <input v-model="form.title"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="title" type="text" placeholder="Título del evento">
             </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        for="grid-password">
-                        Password
-                    </label>
-                    <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-password" type="password" placeholder="******************">
-                    <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-                </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="description">Descripción (Opcional)</label>
+                <input v-model="form.description"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="description" type="text" placeholder="Descripción del evento">
             </div>
-            <div class="flex flex-wrap -mx-3 mb-2">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                        City
-                    </label>
-                    <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="text" placeholder="Albuquerque">
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                        State
-                    </label>
-                    <div class="relative">
-                        <select
-                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-state">
-                            <option>New Mexico</option>
-                            <option>Missouri</option>
-                            <option>Texas</option>
-                        </select>
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-                        Zip
-                    </label>
-                    <input
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-zip" type="text" placeholder="90210">
-                </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="start">Fecha de Inicio *</label>
+                <input v-model="form.start"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="start" type="datetime-local" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="end">Fecha de Fin *</label>
+                <input v-model="form.end"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="end" type="datetime-local" required>
+            </div>
+
+            <div class="flex justify-end">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+                    type="submit">
+                    Actualizar
+                </button>
             </div>
         </form>
     </div>
 </template>
+
+<script setup>
+    import { useCitaStore } from '@/stores/cita';
+    import { ref } from 'vue';
+
+    const citaStore = useCitaStore();
+
+    // Variables reactivas para almacenar los valores del formulario
+    const form = ref({
+        title: '',
+        description: '',
+        start: '',
+        end: '',
+        user_id: citaStore.i
+    });
+
+    // Método para manejar el envío del formulario
+    const submitForm = async () => {
+        if (!form.value.start || !form.value.end) {
+            alert("Las fechas de inicio y fin son obligatorias.");
+            return;
+        }
+        const eventData={
+            start: form.value.start,
+            end: form.value.end,
+            user_id: form.value.user_id,
+        };
+        console.log(form.value.start);
+        if (form.value.title) eventData.title = form.value.title;
+        if (form.value.description) eventData.description = form.value.description;
+        try {
+            const response = await axios.post('/api/event/create', eventData);
+            console.log("Evento creado:", response.data);
+            alert("Evento registrado con éxito");
+        } catch (error) {
+            console.error("Error al guardar evento", error);
+            alert("Error al registrar el evento.");
+        }
+    };
+</script>

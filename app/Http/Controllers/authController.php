@@ -19,15 +19,14 @@ class authController extends Controller
     public function login(LoginRequest $request)
     { 
         $credentials = $request->only('email', 'password');
-        // Intentar autenticar al usuario
         if (Auth::attempt($credentials)) {
             return redirect()->route('dashboard.user');
         }
-        return redirect()->route('login.form')->withErrors(['error','Error en las credenciales']);
+        return redirect()->route('login')->withErrors(['error','Error en las credenciales']);
     }
     public function logout(){
         Auth::logout();
-        return redirect()->route('login.form');
+        return redirect()->route('login');
     }
     public function showDashboardUser(){
         return view('auth.dashboard.dashboardAdmin');
@@ -47,6 +46,6 @@ class authController extends Controller
         ]);
         session()->flash('success','Tu cuenta ha sido creada con exito');
         
-        return redirect()->route('login.form');
+        return redirect()->route('login');
     }
 }

@@ -36,7 +36,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/dashboard/citar"
+                    <router-link to='/dashboard/citar'
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -103,15 +103,27 @@
 <script setup>
     import axios from 'axios';
     import { onMounted,ref } from 'vue';
+    import { useCitaStore } from '@/stores/cita';
+
+    const citaStore=useCitaStore();
+
     const props=defineProps({
         name:{
             type: String,
             default: "none",
+        },
+        id:{
+            type: String,
+            default: "none",
         }
+       
     });
-    const name=ref("");
-    name.value=props.name;
-   
+    const na=ref("");
+    const i=ref("");
+
+    i.value=props.id;
+    na.value=props.name;
+
     const logout=()=>{
         
         axios.post('/logout').then(response=>{
@@ -120,9 +132,8 @@
             console.error('error ',error)
         });
     };
+    onMounted(()=>{
+        citaStore.setCita(na.value,i.value);
+    });
         
 </script>
-
-<style scoped>
-/* Estilos específicos para el dashboard */
-</style>

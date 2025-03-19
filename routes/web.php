@@ -16,11 +16,13 @@ Route::get('/',[homeController::class,'index']);
 Route::get('/register',[authController::class,'showRegisterForm'])->name('register.form');
 Route::post('/register',[authController::class,'register'])->name('register.submit');
 Route::middleware([checkRole::class.':0'])->group(function (){
-    Route::get('/login',[authController::class,'showLoginForm'])->name('login.form');
-    Route::post('/login',[authController::class,'login'])->name('login.submit');
+    
+        Route::get('/login',[authController::class,'showLoginForm'])->name('login');
+        Route::post('/login',[authController::class,'login'])->name('login.submit');
+    
 });
 
-Route::middleware([checkRole::class.':1'])->group(function (){
+Route::middleware([checkRole::class.':1','auth:sanctum'])->group(function (){
     Route::get('/dashboard/{dash?}',[authController::class,'showDashboardUser'])->whereIn('dash',['citar','usuario','historial'])->name('dashboard.user');
     Route::post('/logout',[authController::class,'logout'])->name('logout.submit');
 });

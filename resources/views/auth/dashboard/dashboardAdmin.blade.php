@@ -12,7 +12,7 @@
 
 <body>
     
-    <div id="app" data-name='{{ Auth::user()->name }}'>
+    <div id="app" data-name='{{ Auth::user()->name }}' data-i='{{Auth::user()->id}}'>
     </div>
 </body>
 

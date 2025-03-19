@@ -27,7 +27,7 @@ export default {
           left: 'dayGridMonth,timeGridWeek,timeGridDay',
           center: 'title',
         },
-        events:[]
+        events:'http://localhost/api/event/show',
 
       }
     }
