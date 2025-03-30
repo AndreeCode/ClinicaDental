@@ -21,7 +21,7 @@ class checkRole
             if(Auth::check()){
                 return $next($request);
             }
-            return redirect()->route('login.form');
+            return redirect()->route('login');
         }
         
         if(!Auth::check()){

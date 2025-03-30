@@ -1,6 +1,6 @@
 <template>
     <div class="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-md">
-        <h1 class="text-xl font-bold mb-4 text-gray-700">Actualizar Registro</h1>
+        <h1 class="text-xl font-bold mb-4 text-gray-700">Reservar cita</h1>
 
         <form @submit.prevent="submitForm">
             <div class="mb-4">
@@ -35,7 +35,7 @@
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
                     type="submit">
-                    Actualizar
+                    Reservar
                 </button>
             </div>
         </form>

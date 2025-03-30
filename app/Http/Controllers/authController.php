@@ -26,7 +26,7 @@ class authController extends Controller
     }
     public function logout(){
         Auth::logout();
-        return redirect()->route('login');
+        return response()->json(['message' => 'Logged out'], 200);
     }
     public function showDashboardUser(){
         return view('auth.dashboard.dashboardAdmin');

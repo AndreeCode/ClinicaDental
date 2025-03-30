@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
 
             $table->string('description')->nullable();
-
+            
             $table->timestamp('start');
             $table->timestamp('end');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
