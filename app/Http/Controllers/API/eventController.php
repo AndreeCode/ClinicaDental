@@ -31,6 +31,7 @@ class eventController extends Controller
         
         return response()->json([
             'message'=>'hola mundo perfectt',
+            'id'=>$event->id,
         ]);
     }
 
