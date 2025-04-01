@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/event/show',[eventController::class,'show']);
 
 Route::post('/event/create',[eventController::class,'store']);
-Route::middleware([checkRole::class.':1'])->group(function(){
 
-    Route::put('',[eventController::class,'update']);
-    Route::delete('',[eventController::class,'destroy']);
-});
+Route::put('',[eventController::class,'update']);
+Route::delete('/event/{id}',[eventController::class,'destroy']);

@@ -96,9 +96,9 @@
         this.showAddEventModal = true;
       },
       handleEventClick(info) {
-
+        
         this.selectedEvent = {
-
+          id:info.event.id,
           title: info.event.title,
           description: info.event.extendedProps?.description || '',
           start: info.event.start?.toISOString().slice(0, 19) || '',
@@ -136,10 +136,32 @@
         }
       },
       async updateEvent() {
+        
         console.log('update');
       },
       async deleteEvent() {
-        console.log('delete');
+        
+        if (!this.selectedEvent.id) {
+          alert("No se puede eliminar un evento sin ID.");
+          return;
+        }
+
+        if (!confirm("¿Estás seguro de que deseas eliminar este evento?")) {
+          return;
+        }
+        try{
+          
+          const response=await axios.delete(`/api/event/${this.selectedEvent.id}`);
+          const calendarApi=this.$refs.calendarRef.getApi();
+          let event=calendarApi.getEventById(this.selectedEvent.id);
+          if(event){
+            event.remove();
+          }
+          this.showEventDetailModal = false;
+        }catch(error){
+          alert('Error al eliminar el evento');
+          console.log(error);
+        }
       }
     }
   };

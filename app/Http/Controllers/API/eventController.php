@@ -55,8 +55,17 @@ class eventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        $event=Event::find($id);
+        if(!$event){
+            return response()->json([
+                'error'=>"Evento no encontrado"
+            ,404]);
+        }
+        $event->delete();
+        return response()->json([
+            'messaje'=>'Evento eliminado correctamente',
+        ]);
     }
 }
