@@ -136,8 +136,32 @@
         }
       },
       async updateEvent() {
-        
-        console.log('update');
+        if(!this.selectedEvent.start || !this.selectedEvent.end){
+          alert("las fechas de inicio y fun son obligatorias")
+          return;
+        }
+        try{
+          const response =await axios.put(`/api/event/${this.selectedEvent.id}`,{
+            title: this.selectedEvent.title || "Sin título",
+            description: this.selectedEvent.description || "Sin descripción",
+            start: this.selectedEvent.start,
+            end: this.selectedEvent.end
+          })
+          const calendarApi = this.$refs.calendarRef.getApi();
+          let event = calendarApi.getEventById(this.selectedEvent.id);
+          if (event) {
+            event.setProp("title", this.selectedEvent.title || "Sin título");
+            event.setExtendedProp("description", this.selectedEvent.description || "Sin descripción");
+            event.setStart(this.selectedEvent.start);
+            event.setEnd(this.selectedEvent.end);
+          }
+
+          this.showEventDetailModal = false;
+
+        }catch(error){
+          alert("Error al actualizar el vento.")
+          console.log(error);
+        }
       },
       async deleteEvent() {
         

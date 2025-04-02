@@ -10,5 +10,5 @@ Route::get('/event/show',[eventController::class,'show']);
 
 Route::post('/event/create',[eventController::class,'store']);
 
-Route::put('',[eventController::class,'update']);
+Route::put('/event/{event}',[eventController::class,'update']);
 Route::delete('/event/{id}',[eventController::class,'destroy']);
