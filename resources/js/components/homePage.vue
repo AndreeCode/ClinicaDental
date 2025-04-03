@@ -51,10 +51,16 @@
   import dayGridPlugin from '@fullcalendar/daygrid';
   import timeGridPlugin from '@fullcalendar/timegrid';
   import interactionPlugin from '@fullcalendar/interaction';
+  import { useCitaStore } from '@/stores/cita';
 
   export default {
     components: {
       FullCalendar
+    },
+    computed:{
+      user_id(){
+        return useCitaStore().i;
+      }
     },
     data() {
       return {
@@ -102,22 +108,24 @@
           title: info.event.title,
           description: info.event.extendedProps?.description || '',
           start: info.event.start?.toISOString().slice(0, 19) || '',
-          end: info.event.end ? info.event.end.toISOString().slice(0, 19) : ''
+          end: info.event.end ? info.event.end.toISOString().slice(0, 19) : '',
+          user_id:info.event.extendedProps?.user_id || '',
         };
         this.showEventDetailModal = true;
       },
       async addEvent() {
+        
         if (!this.newEvent.start || !this.newEvent.end) {
           alert("Las fechas de inicio y fin son obligatorias.");
           return;
         }
-
+        this.newEvent.user_id=this.user_id;
         try {
           const response = await axios.post('/api/event/create', this.newEvent);
 
-
           const calendarApi = this.$refs.calendarRef.getApi();
-          ;
+
+          
           calendarApi.addEvent({
             id: response.data.id,
             title: this.newEvent.title || "Sin título",
@@ -125,7 +133,7 @@
             end: this.newEvent.end,
 
             description: this.newEvent.description || "Sin descripción",
-            user_id: this.newEvent.user_id
+            user_id: this.newEvent.user_id,
           });
 
           this.showAddEventModal = false;

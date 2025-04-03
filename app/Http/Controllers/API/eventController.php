@@ -40,8 +40,9 @@ class eventController extends Controller
      */
     public function show(Event $event)
     {
-        $event=Event::all();
-        return response()->json($event);
+        $events = Event::select('id', 'title', 'description', 'start', 'end','user_id')
+            ->get();
+        return response()->json($events);
     }
 
     /**

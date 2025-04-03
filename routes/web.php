@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\eventController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\homeController;
 use App\Http\Middleware\checkRole;
@@ -23,6 +24,13 @@ Route::middleware([checkRole::class.':0'])->group(function (){
 });
 
 Route::middleware([checkRole::class.':1'])->group(function (){
+    Route::prefix('api')->group(function(){
+        Route::get('/event/show',[eventController::class,'show']);
+        Route::put('/event/{event}',[eventController::class,'update']);
+    Route::delete('/event/{id}',[eventController::class,'destroy']);
+
+    });
+
     Route::get('/dashboard/{dash?}',[authController::class,'showDashboardUser'])->whereIn('dash',['citar','usuario','historial'])->name('dashboard.user');
     Route::post('/logout',[authController::class,'logout'])->name('logout.submit');
 });
