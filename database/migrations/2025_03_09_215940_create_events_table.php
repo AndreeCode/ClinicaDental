@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('start');
             $table->timestamp('end');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('empleado_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }
