@@ -27,7 +27,9 @@ Route::middleware([checkRole::class.':1'])->group(function (){
     Route::prefix('api')->group(function(){
         Route::get('/event/show',[eventController::class,'show']);
         Route::put('/event/{event}',[eventController::class,'update']);
-    Route::delete('/event/{id}',[eventController::class,'destroy']);
+        Route::delete('/event/{id}',[eventController::class,'destroy']);
+
+        Route::get('user/show',[authController::class,'showUser']);
 
     });
 

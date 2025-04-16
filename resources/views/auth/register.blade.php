@@ -10,7 +10,7 @@
 
 <body>
     <h1>register</h1>
-    <a href="{{ route('login.form') }}">Login</a>
+    <a href="{{ route('login') }}">Login</a>
     <div class="max-w-4xl max-sm:max-w-lg mx-auto font-[sans-serif] p-6">
         <div class="text-center mb-12 sm:mb-16">
             <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"

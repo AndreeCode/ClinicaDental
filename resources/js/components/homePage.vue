@@ -76,7 +76,7 @@
             left: 'dayGridMonth,timeGridWeek,timeGridDay',
             center: 'title'
           },
-          events: 'http://localhost/api/event/show',
+          events: 'http://127.0.0.1:8000/api/event/show',
           dateClick: this.handleDateClick,
           eventClick: this.handleEventClick
         },

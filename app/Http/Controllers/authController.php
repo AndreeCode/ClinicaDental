@@ -48,4 +48,8 @@ class authController extends Controller
         
         return redirect()->route('login');
     }
+    public function showUser(){
+        $users=User::select('name','lastname','rol')->get();
+        return response()->json($users);
+    }
 }

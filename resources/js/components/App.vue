@@ -19,7 +19,7 @@
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ClinicaDental</span>
             </a>
-            <h1>hola {{ name }}</h1>
+            <h1 class="text-gray-500">Hola {{ name }}</h1>
             <ul class="space-y-2 font-medium">
                 <li>
                     <router-link to="/dashboard/"

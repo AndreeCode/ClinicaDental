@@ -49,6 +49,6 @@ class User extends Authenticatable
         ];
     }
     public function citas(){
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Event::class,'user_id');
     } 
 }

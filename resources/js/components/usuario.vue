@@ -8,115 +8,80 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Product name
+                            N
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Color
+                            nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Category
+                            apellido
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Price
+                            role
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Action
+                            
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr
+                 
+                    
+                    <tr v-for='(user,hola) in users'
                         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
+                            {{hola+1}}
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            {{user.name}}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{user.lastname}}
                         </td>
                         <td class="px-6 py-4">
-                            $2999
+                            {{user.rol}}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="#">editar</a>
                         </td>
+                        <td class="px-6 py-4">
+                            <a href="#">eliminar</a>
+                        </td>
+                        
+                        
+
                     </tr>
-                    <tr
-                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="px-6 py-4">
-                            White
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop PC
-                        </td>
-                        <td class="px-6 py-4">
-                            $1999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr
-                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="px-6 py-4">
-                            Black
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $99
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr
-                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Google Pixel Phone
-                        </th>
-                        <td class="px-6 py-4">
-                            Gray
-                        </td>
-                        <td class="px-6 py-4">
-                            Phone
-                        </td>
-                        <td class="px-6 py-4">
-                            $799
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple Watch 5
-                        </th>
-                        <td class="px-6 py-4">
-                            Red
-                        </td>
-                        <td class="px-6 py-4">
-                            Wearables
-                        </td>
-                        <td class="px-6 py-4">
-                            $999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
 
     </div>
 </template>
+<script>
+
+    export default{
+        data(){
+            return {
+                users:[],
+                hola: 0,
+            };
+        },
+        mounted(){
+            try{
+                axios.get('/api/user/show').then(resp=>{
+                    this.users=resp.data;
+                }
+                );
+            }catch(e){
+                console.log(e)
+            }
+        }
+    }
+    
+
+    
+</script>
