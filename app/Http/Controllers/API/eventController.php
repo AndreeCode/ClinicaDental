@@ -50,17 +50,12 @@ class eventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $validatedData = $request->validate([
-            'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
-            'start' => 'required|date',
-            'end' => 'required|date|after_or_equal:start',
-        ]);
+        
         $event->update([
-            'title' => $validatedData['title'] ?? 'Sin título',
-            'description' => $validatedData['description'] ?? 'Sin descripción',
-            'start' => $validatedData['start'],
-            'end' => $validatedData['end'],
+            'title' => $request['title'] ?? 'Sin título',
+            'description' => $request['description'] ?? 'Sin descripción',
+            'start' => $request['start'],
+            'end' => $request['end'],
         ]);
     
         return response()->json([

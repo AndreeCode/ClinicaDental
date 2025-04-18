@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdontoCenter Hap.</title>
+    <title>Clinica Dental</title>
     <link rel="icon" href="{{ asset('images/icons/logo-small.png') }}">
     @vite('resources/css/app.css')
 
